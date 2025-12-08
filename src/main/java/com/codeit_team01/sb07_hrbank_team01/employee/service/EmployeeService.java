@@ -1,0 +1,30 @@
+package com.codeit_team01.sb07_hrbank_team01.employee.service;
+
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.request.EmployeeCreateRequestDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.request.EmployeeSearchConditionDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.request.EmployeeSearchPageRequestDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.request.EmployeeUpdateRequestDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.response.EmployeeDistributionResponseDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.response.EmployeePageResponseDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.response.EmployeeResponseDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.dto.response.EmployeeTrendResponseDto;
+import com.codeit_team01.sb07_hrbank_team01.employee.entity.EmployeeStatus;
+import com.codeit_team01.sb07_hrbank_team01.file.dto.FileCreateRequestDto;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public interface EmployeeService {
+    EmployeeResponseDto createEmployee(EmployeeCreateRequestDto employeeCreateRequestDto,
+                                       FileCreateRequestDto fileCreateRequestDto);
+    EmployeeResponseDto updateEmployee(EmployeeUpdateRequestDto employeeUpdateRequestDto,
+                                       FileCreateRequestDto fileCreateRequestDto,
+                                       Long id);
+    void deleteEmployee(Long id);
+    EmployeeResponseDto getEmployee(Long id);
+    List<EmployeeResponseDto> getEmployeesBySearch(EmployeeSearchConditionDto employeeSearchConditionDto);
+    EmployeePageResponseDto getEmployeesByPageSearch(EmployeeSearchPageRequestDto employeeSearchPageRequestDto);
+    List<EmployeeTrendResponseDto> getEmployeeTrend(LocalDate from, LocalDate to, String unit);
+    List<EmployeeDistributionResponseDto> getEmployeeDistribution(String groupBy, EmployeeStatus status);
+    long getEmployeeCount(EmployeeStatus status, LocalDate fromDate, LocalDate toDate);
+}

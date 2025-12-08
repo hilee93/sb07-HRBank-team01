@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: sb07_HRBank_team01
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+
+  open-in-view: false
+
+HRBank:
+  storage:
+    type: local
+    local:
+      # path: Users/사용자이름/Desktop/HRBank/
+      root-path: "${user.home}/Desktop/HRBank/"
+      backup-path: "${user.home}/Desktop/HRBank/backup"
+
+logging:
+  file:
+    name: logs/hrbank.log
+  level:
+    root: INFO
+    com.codeit_team01.sb07_hrbank_team01: DEBUG
+
